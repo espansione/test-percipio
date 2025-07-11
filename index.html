@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percipio Group - Advisory, Innovazione e Consulenza d’azienda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Analytics - Sostituisci G-XXXXXXXXXX con il tuo ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VKNXSGGE5H');
+    </script>
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; color: #1a202c; }
+        .header-bg { background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2940&auto=format&fit=crop'); background-size: cover; background-position: center; }
+        .card { background-color: white; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; overflow: hidden; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .btn { padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.3s ease; display: inline-block; border: 2px solid transparent; }
+        .btn-primary { background-color: #0d2a4c; color: white; border-color: #0d2a4c; }
+        .btn-primary:hover:not(:disabled) { background-color: #1a3b6c; border-color: #1a3b6c; transform: scale(1.05); }
+        .btn-primary:disabled { background-color: #9da3ac; border-color: #9da3ac; cursor: not-allowed; }
+        .btn-secondary { background-color: #e5e7eb; color: #1f2937; border-color: #e5e7eb; }
+        .btn-secondary:hover { background-color: #d1d5db; border-color: #d1d5db; }
+        .nav-link { color: white; font-weight: 500; transition: color 0.3s ease; position: relative; padding-bottom: 0.25rem; cursor: pointer; }
+        .nav-link:hover, .nav-link.active { color: #a0aec0; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%; transform: translateX(-50%); background-color: #a0aec0; transition: width 0.3s ease; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .page { display: none; }
+        .page.active { display: block; }
+        .form-input { width: 100%; padding: 0.75rem 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+        .form-input:focus { outline: none; border-color: #0d2a4c; box-shadow: 0 0 0 2px rgba(13, 42, 76, 0.2); }
+        .file-input-label { display: inline-block; padding: 0.75rem 1.5rem; background-color: #e5e7eb; color: #1f2937; border: 1px solid #d1d5db; border-radius: 0.5rem; cursor: pointer; transition: background-color 0.2s ease-in-out; }
+        .file-input-label:hover { background-color: #d1d5db; }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="bg-[#0d2a4c] text-white sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl md:text-2xl font-bold cursor-pointer" id="logo-link" data-page="home">PERCIPIO GROUP</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a class="nav-link active" data-page="home">Home</a>
+                <a class="nav-link" data-page="chi-siamo">Chi Siamo</a>
+                <div class="relative group">
+                    <a class="nav-link" data-page="servizi">Servizi <i class="fas fa-chevron-down text-xs"></i></a>
+                    <div class="absolute hidden group-hover:block bg-white text-black rounded-md shadow-lg py-2 w-56 z-10">
+                        <a class="block px-4 py-2 text-sm hover:bg-gray-100 nav-link-dropdown" data-page="percipio-consulting">Percipio Consulting</a>
+                        <a class="block px-4 py-2 text-sm hover:bg-gray-100 nav-link-dropdown" data-page="addnexta">Addnexta</a>
+                        <a class="block px-4 py-2 text-sm hover:bg-gray-100 nav-link-dropdown" data-page="claim-analitika">Claim Analitika</a>
+                        <a class="block px-4 py-2 text-sm hover:bg-gray-100 nav-link-dropdown" data-page="opiniometrica">Opiniometrica</a>
+                    </div>
+                </div>
+                <a class="nav-link" data-page="advisory-board">Advisory Board</a>
+                <a class="nav-link" data-page="ricerca-sviluppo">Ricerca & Sviluppo</a>
+                <a class="nav-link" data-page="carriere">Carriere</a>
+                <a class="nav-link" data-page="contatti">Contattaci</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <a class="block py-3 px-4 text-base hover:bg-gray-700 nav-link" data-page="home">Home</a>
+            <a class="block py-3 px-4 text-base hover:bg-gray-700 nav-link" data-page="chi-siamo">Chi Siamo</a>
+             <div>
+                <button id="mobile-servizi-toggle" class="w-full text-left flex justify-between items-center py-3 px-4 text-base hover:bg-gray-700">
+                    <span>Servizi</span>
+                    <i class="fas fa-chevron-down text-xs transition-transform"></i>
+                </button>
+                <div id="mobile-servizi-submenu" class="hidden pl-4 bg-gray-800">
+                    <a class="block py-3 px-4 text-sm hover:bg-gray-700 nav-link" data-page="percipio-consulting">Percipio Consulting</a>
+                    <a class="block py-3 px-4 text-sm hover:bg-gray-700 nav-link" data-page="addnexta">Addnexta</a>
+                    <a class="block py-3 px-4 text-sm hover:bg-gray-700 nav-link" data-page="claim-analitika">Claim Analitika</a>
+                    <a class="block py-3 px-4 text-sm hover:bg-gray-700 nav-link" data-page="opiniometrica">Opiniometrica</a>
+                </div>
+            </div>
+            <a class="block py-3 px-4 text-base hover:bg-gray-700 nav-link" data-page="advisory-board">Advisory Board</a>
+            <a class="block py-3 px-4 text-base hover:bg-gray-700 nav-link" data-page="ricerca-sviluppo">Ricerca & Sviluppo</a>
+            <a class="block py-3 px-4 text-base hover:bg-gray-700 nav-link" data-page="carriere">Carriere</a>
+            <a class="block py-3 px-4 text-base hover:bg-gray-700 nav-link" data-page="contatti">Contattaci</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <div id="page-home" class="page active">
+            <div class="header-bg text-white">
+                <div class="bg-black bg-opacity-60">
+                    <div class="container mx-auto px-4 sm:px-6 py-24 md:py-32 text-center">
+                        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Advisory, Innovazione e Consulenza d’azienda</h1>
+                        <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">Potenziamo gli asset intangibili e sblocchiamo il potenziale nascosto dei contesti imprenditoriali.</p>
+                        <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="#" class="btn btn-primary nav-link" data-page="contatti">Prenota Appuntamento</a>
+                            <a href="#" class="btn btn-secondary !bg-transparent !text-white !border-white hover:!bg-white hover:!text-[#0d2a4c] nav-link" data-page="servizi">I Nostri Servizi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section class="py-16 md:py-20 px-4 sm:px-6">
+                <div class="container mx-auto text-center">
+                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">In Percipio Group viviamo ogni sfida come un'opportunità</h2>
+                    <p class="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                        Lavorando al tuo fianco, le nostre persone combinano innovazione e intuizione per risolvere i tuoi problemi più difficili. Grazie a una conoscenza approfondita del settore e a un'esperienza consolidata, la nostra varietà di servizi aiuta la tua azienda ad avere un impatto significativo e duraturo.
+                    </p>
+                </div>
+            </section>
+            <section class="py-16 md:py-20 px-4 sm:px-6 bg-white">
+                 <div class="container mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center">Le Nostre Aree di Eccellenza</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="card p-8 text-center">
+                            <div class="text-4xl text-[#0d2a4c] mb-4"><i class="fas fa-briefcase"></i></div>
+                            <h3 class="text-xl font-bold mb-2">PERCIPIO CONSULTING</h3>
+                            <p class="text-gray-600 mb-4">Consulenza di direzione e strategie per progetti sfidanti.</p>
+                            <a href="#" class="font-bold text-[#0d2a4c] hover:underline nav-link-dropdown" data-page="percipio-consulting">Scopri di più &rarr;</a>
+                        </div>
+                        <div class="card p-8 text-center">
+                             <div class="text-4xl text-[#0d2a4c] mb-4"><i class="fas fa-sitemap"></i></div>
+                            <h3 class="text-xl font-bold mb-2">ADDNEXTA</h3>
+                            <p class="text-gray-600 mb-4">Piattaforma strategica per accelerare la crescita aziendale.</p>
+                             <a href="#" class="font-bold text-[#0d2a4c] hover:underline nav-link-dropdown" data-page="addnexta">Scopri di più &rarr;</a>
+                        </div>
+                        <div class="card p-8 text-center">
+                             <div class="text-4xl text-[#0d2a4c] mb-4"><i class="fas fa-gavel"></i></div>
+                            <h3 class="text-xl font-bold mb-2">CLAIM ANALITIKA</h3>
+                            <p class="text-gray-600 mb-4">Gestione massiva dei reclami con la nostra piattaforma Reg-Tech.</p>
+                             <a href="#" class="font-bold text-[#0d2a4c] hover:underline nav-link-dropdown" data-page="claim-analitika">Scopri di più &rarr;</a>
+                        </div>
+                        <div class="card p-8 text-center">
+                            <div class="text-4xl text-[#0d2a4c] mb-4"><i class="fas fa-poll"></i></div>
+                            <h3 class="text-xl font-bold mb-2">OPINIOMETRICA</h3>
+                            <p class="text-gray-600 mb-4">Survey digitalizzate per dati strategici e analisi di mercato.</p>
+                             <a href="#" class="font-bold text-[#0d2a4c] hover:underline nav-link-dropdown" data-page="opiniometrica">Scopri di più &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-16 md:py-20 px-4 sm:px-6 bg-[#0d2a4c] text-white">
+                <div class="container mx-auto">
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
+                        <div><p class="text-3xl md:text-4xl font-bold">+80</p><p class="text-gray-300 text-sm">Clienti Corporate<br>attivi</p></div>
+                        <div><p class="text-3xl md:text-4xl font-bold">25</p><p class="text-gray-300 text-sm">Aree di mercato<br>(Europa, Nord Africa, Usa e Cina)</p></div>
+                        <div><p class="text-3xl md:text-4xl font-bold">5</p><p class="text-gray-300 text-sm">Piattaforme ideate<br>e sviluppate</p></div>
+                        <div><p class="text-3xl md:text-4xl font-bold">3</p><p class="text-gray-300 text-sm">Algoritmi innovativi<br>ideati e sviluppati</p></div>
+                        <div class="col-span-2 md:col-span-1"><p class="text-3xl md:text-4xl font-bold">8</p><p class="text-gray-300 text-sm">Fondi di Private Equity<br>& Venture Capital associati</p></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="page-chi-siamo" class="page">
+            <section class="py-16 md:py-20 px-4 sm:px-6">
+                <div class="container mx-auto">
+                    <h1 class="text-4xl md:text-5xl font-bold text-center mb-10">Chi Siamo</h1>
+                    <div class="max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed space-y-6">
+                        <p>Percipio è una società di consulenza e advisory fondata nel 2022 da un team di consulenti indipendenti con esperienze multidisciplinari, focalizzati a <strong>potenziare gli asset intangibili</strong> e <strong>sbloccare il potenziale nascosto</strong> dei contesti imprenditoriali dove siamo chiamati ad operare.</p>
+                        <p>Il nome "Percipio" ha radici latine e denota una pluralità di azioni fondamentali per la nostra identità: <strong>percepire, apprendere, comprendere, raccogliere i frutti e trarne un guadagno</strong>. I consulenti di Percipio si distinguono per una <strong>cultura dell'apprendimento continuo e della collaborazione</strong>, bilanciando e ampliando costantemente le conoscenze, l'<strong>approccio multidisciplinare</strong> e la <strong>visione d'insieme</strong>.</p>
+                        <p>I nostri servizi, raggruppati in Business Units, sono progettati per offrire ai nostri clienti e partner un supporto costante di leve strategiche, utili a <strong>valorizzare le dinamiche di successo</strong> e a <strong>strutturare percorsi di crescita sostenibili</strong>.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-16 md:py-20 px-4 sm:px-6 bg-gray-50">
+                <div class="container mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Le Nostre Esperienze: Progetti Chiave</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                        <div class="card p-6 text-center flex flex-col">
+                            <div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-road"></i></div>
+                            <h3 class="font-bold text-lg text-[#0d2a4c] mb-2">Grandi Infrastrutture Pubbliche</h3>
+                            <p class="text-gray-600 flex-grow">Consulenza strategica di business intelligence per la vendita della quota societaria di un consorzio operante in Algeri.</p>
+                        </div>
+                        <div class="card p-6 text-center flex flex-col">
+                             <div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-plane-departure"></i></div>
+                            <h3 class="font-bold text-lg text-[#0d2a4c] mb-2">Turismo</h3>
+                            <p class="text-gray-600 flex-grow">Consulenza finanziario e gestionale per una grande struttura alberghiera sul Lago di Como.</p>
+                        </div>
+                        <div class="card p-6 text-center flex flex-col">
+                            <div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-clinic-medical"></i></div>
+                            <h3 class="font-bold text-lg text-[#0d2a4c] mb-2">Ospitalità Cittadini Stranieri</h3>
+                            <p class="text-gray-600 flex-grow">Consulenza nella governance e nell'avvio di una società di diritto italiano, con capogruppo in Svizzera, leader europea nel settore.</p>
+                        </div>
+                        <div class="card p-6 text-center flex flex-col">
+                            <div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-truck-fast"></i></div>
+                           <h3 class="font-bold text-lg text-[#0d2a4c] mb-2">Trasporti e Logistica</h3>
+                           <p class="text-gray-600 flex-grow">Consulenza direzionale per la ristrutturazione di una primaria società di trasporti e logistica e dismissione di asset non strategici.</p>
+                       </div>
+                        <div class="card p-6 text-center flex flex-col">
+                            <div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-warehouse"></i></div>
+                            <h3 class="font-bold text-lg text-[#0d2a4c] mb-2">Polo Logistico</h3>
+                            <p class="text-gray-600 flex-grow">Consulenza direzionale per lo sviluppo delle leve economico finanziarie per il rilancio di un polo logistico strategico per l'Italia.</p>
+                        </div>
+                        <div class="card p-6 text-center flex flex-col">
+                            <div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-graduation-cap"></i></div>
+                            <h3 class="font-bold text-lg text-[#0d2a4c] mb-2">Campus Universitario e Sport</h3>
+                            <p class="text-gray-600 flex-grow">Consulenza finanziaria per il supporto alla realizzazione di un polo sportivo e universitario innovativo a Roma.</p>
+                        </div>
+                        <div class="card p-6 text-center flex flex-col">
+                            <div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-project-diagram"></i></div>
+                            <h3 class="font-bold text-lg text-[#0d2a4c] mb-2">Reti Digitali</h3>
+                            <p class="text-gray-600 flex-grow">Attività di R&S per la realizzazione e collaudo dell'algoritmo Mecanism Optizimation Client.</p>
+                        </div>
+                        <div class="card p-6 text-center flex flex-col">
+                            <div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-file-signature"></i></div>
+                            <h3 class="font-bold text-lg text-[#0d2a4c] mb-2">Digitalizzazione Claim</h3>
+                            <p class="text-gray-600 flex-grow">Attività di R&S per la realizzazione e collaudo della Piattaforma per la gestione della conformità dei claim.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-16 bg-white">
+                <div class="container mx-auto text-center px-4 sm:px-6">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Entra a far parte del nostro Team</h3>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-6">Siamo sempre alla ricerca di talenti che condividano la nostra visione e la nostra passione per l'innovazione. Scopri le posizioni aperte e unisciti a noi.</p>
+                    <a href="#" class="btn btn-primary nav-link" data-page="carriere">Lavora con noi</a>
+                </div>
+            </section>
+        </div>
+        <div id="page-servizi" class="page">
+             <section class="py-16 md:py-20 px-4 sm:px-6 bg-white">
+                 <div class="container mx-auto">
+                    <h1 class="text-4xl md:text-5xl font-bold text-center mb-6">I Nostri Servizi</h1>
+                    <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-12">Le Business Unit che Percipio Group offre ai propri clienti vanno dalla consulenza di direzione ai servizi ideati e sviluppati dall’area di ricerca e sviluppo, nel segno dell’innovazione e di una progettualità che punta sempre all’avanguardia.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="card flex flex-col">
+                            <div class="p-8 flex-grow text-center">
+                                <div class="text-4xl text-[#0d2a4c] mb-4"><i class="fas fa-briefcase"></i></div>
+                                <h3 class="text-2xl font-bold text-[#0d2a4c] mb-3">Percipio Consulting</h3>
+                                <p class="text-gray-600 mb-6">Consulenza di direzione di impresa, strategie di mercato, pianificazione dei rischi e soluzioni innovative, per affiancarvi in progetti sfidanti e innovativi.</p>
+                            </div>
+                            <div class="bg-gray-50 p-6">
+                                <a href="#" class="btn btn-secondary w-full text-center nav-link-dropdown" data-page="percipio-consulting">Dettagli del Servizio</a>
+                            </div>
+                        </div>
+                         <div class="card flex flex-col">
+                            <div class="p-8 flex-grow text-center">
+                                <div class="text-4xl text-[#0d2a4c] mb-4"><i class="fas fa-sitemap"></i></div>
+                                <h3 class="text-2xl font-bold text-[#0d2a4c] mb-3">Addnexta</h3>
+                                <p class="text-gray-600 mb-6">Servizio di consulenza strategica progettato per accelerare la crescita delle aziende tramite la Piattaforma Addnexta, che identifica, ottimizza e integra i CRM di più imprese.</p>
+                            </div>
+                            <div class="bg-gray-50 p-6">
+                                <a href="#" class="btn btn-secondary w-full text-center nav-link-dropdown" data-page="addnexta">Dettagli del Servizio</a>
+                            </div>
+                        </div>
+                         <div class="card flex flex-col">
+                            <div class="p-8 flex-grow text-center">
+                                <div class="text-4xl text-[#0d2a4c] mb-4"><i class="fas fa-gavel"></i></div>
+                                <h3 class="text-2xl font-bold text-[#0d2a4c] mb-3">Claim Analitika</h3>
+                                <p class="text-gray-600 mb-6">Servizio di Global Claim Solution che, grazie alla piattaforma Reg-Tech di nostra proprietà, offre una gestione massiva dei reclami in modalità BPO.</p>
+                            </div>
+                            <div class="bg-gray-50 p-6">
+                                <a href="#" class="btn btn-secondary w-full text-center nav-link-dropdown" data-page="claim-analitika">Dettagli del Servizio</a>
+                            </div>
+                        </div>
+                         <div class="card flex flex-col">
+                            <div class="p-8 flex-grow text-center">
+                                <div class="text-4xl text-[#0d2a4c] mb-4"><i class="fas fa-poll"></i></div>
+                                <h3 class="text-2xl font-bold text-[#0d2a4c] mb-3">Opiniometrica</h3>
+                                <p class="text-gray-600 mb-6">Servizio di survey interamente digitalizzato di opinioni altamente qualificate su orientamenti, tendenze e sentiment dei mercati e della società.</p>
+                            </div>
+                             <div class="bg-gray-50 p-6">
+                                <a href="#" class="btn btn-secondary w-full text-center nav-link-dropdown" data-page="opiniometrica">Dettagli del Servizio</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="page-percipio-consulting" class="page">
+            <section class="py-16 md:py-20 px-4 sm:px-6">
+                <div class="container mx-auto">
+                    <a href="#" class="text-[#0d2a4c] hover:underline mb-8 inline-block nav-link-dropdown" data-page="servizi">&larr; Torna a tutti i servizi</a>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Percipio Consulting</h1>
+                    <p class="text-lg text-gray-700 max-w-4xl leading-relaxed mb-12">Percipio Consulting è un servizio di consulenza di direzione di impresa, strategie di mercato, pianificazione dei rischi e soluzioni innovative. I nostri consulenti, con competenze internazionali e un network qualificato, affrontano l'attività con un mindset orientato a raccogliere le sfide dei clienti e a farle proprie, lavorando a fianco di imprenditori e manager per identificare soluzioni su misura.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-user-tie"></i></div><h4 class="font-bold text-lg mb-2">Consulenza Direzionale</h4><p class="text-gray-600">Consulenza organizzativa, gestionale, finanziaria, di ristrutturazione e supporto alle imprese, anche con Temporary Manager.</p></div>
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-hand-holding-usd"></i></div><h4 class="font-bold text-lg mb-2">Financial Advisory</h4><p class="text-gray-600">Supporto per l’analisi dei fabbisogni finanziari, piani industriali e reperimento di finanza ordinaria, agevolata o da fund raising.</p></div>
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-tasks"></i></div><h4 class="font-bold text-lg mb-2">PMO</h4><p class="text-gray-600">Servizio di Project Management Office per la gestione di progetti complessi, avvio di nuove realtà, spin-off e start-up innovative.</p></div>
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-code"></i></div><h4 class="font-bold text-lg mb-2">Metodologie Informatiche</h4><p class="text-gray-600">Consulenza nello sviluppo di software e piattaforme innovative, scrittura di specifiche tecniche e codifica di algoritmi.</p></div>
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-balance-scale"></i></div><h4 class="font-bold text-lg mb-2">Modello Organizzativo 231</h4><p class="text-gray-600">Mappatura dei processi e redazione del modello 231, ottimizzazione dell’internal auditing con soluzioni IT di monitoraggio.</p></div>
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-handshake"></i></div><h4 class="font-bold text-lg mb-2">Operazioni di M&A</h4><p class="text-gray-600">Consulenza legale, economica e tecnica per operazioni di Merger & Acquisition finalizzate a massimizzare il valore aggiunto.</p></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="page-addnexta" class="page">
+            <section class="py-16 md:py-20 px-4 sm:px-6">
+                <div class="container mx-auto">
+                    <a href="#" class="text-[#0d2a4c] hover:underline mb-8 inline-block nav-link-dropdown" data-page="servizi">&larr; Torna a tutti i servizi</a>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Addnexta</h1>
+                    <p class="text-lg text-gray-700 max-w-4xl leading-relaxed mb-12">Addnexta è un servizio offerto per migliorare le performance delle strategie commerciali e del posizionamento sul mercato. Supportato dalla piattaforma Addnexta e dall'algoritmo proprietario <strong>Customer Optimization Mechanism</strong>, mettiamo in relazione i CRM di più imprese per ottimizzare le strategie di mercato, generare valore aggiunto e creare sinergie che avvantaggiano reciprocamente le parti.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-chart-pie"></i></div><h4 class="font-bold text-lg mb-2">CRM Plus</h4><p class="text-gray-600">Analisi tecnica ed economica dei clienti e del loro posizionamento per rafforzare sinergie e sviluppare nuove opportunità.</p></div>
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-link"></i></div><h4 class="font-bold text-lg mb-2">CRM Integration</h4><p class="text-gray-600">Integrazione tra CRM di aziende differenti per identificare nuove opportunità di mercato e creare nuovo valore condiviso.</p></div>
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-users"></i></div><h4 class="font-bold text-lg mb-2">B2B Matchmaking Roundtable</h4><p class="text-gray-600">Servizio di matchmaking del network per generare nuove relazioni, rapporti di valore e propiziare collaborazioni durature.</p></div>
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-lightbulb"></i></div><h4 class="font-bold text-lg mb-2">Alliance System Incubator</h4><p class="text-gray-600">Attività di incubazione tramite il nostro LAB dedicato a startup, investitori e player dell’innovazione.</p></div>
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-rocket"></i></div><h4 class="font-bold text-lg mb-2">Tech Addnesting</h4><p class="text-gray-600">Inserimento di progetti innovativi di start-up e imprese in incubatori e acceleratori, e consulenza nello sviluppo.</p></div>
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-globe-americas"></i></div><h4 class="font-bold text-lg mb-2">Extera</h4><p class="text-gray-600">Supporto all'internazionalizzazione tramite finanza agevolata, contatti con advisors legali e fiscali e istituzioni finanziarie.</p></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="page-claim-analitika" class="page">
+             <section class="py-16 md:py-20 px-4 sm:px-6">
+                <div class="container mx-auto">
+                    <a href="#" class="text-[#0d2a4c] hover:underline mb-8 inline-block nav-link-dropdown" data-page="servizi">&larr; Torna a tutti i servizi</a>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Claim Analitika</h1>
+                    <p class="text-lg text-gray-700 max-w-4xl leading-relaxed mb-12">Un progetto innovativo sviluppato da Percipio per offrire un servizio di Global Claim Business Solution in modalità BPO (Business Process Outsourcing) alle imprese che operano in mercati regolamentati. La nostra piattaforma di Regulatory Technology (Reg-Tech), attraverso workflow digitalizzati e intelligenza artificiale, gestisce i reclami e presidia tutti i livelli di giudizio necessari, garantendo conformità, qualità ed efficacia.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-industry"></i></div><h4 class="font-bold text-lg mb-2">B2B Outsourcing</h4><p class="text-gray-600">Servizio di gestione reclami in BPO per grandi volumi per conto di imprese operanti in mercati regolamentati.</p></div>
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-tasks"></i></div><h4 class="font-bold text-lg mb-2">Compliance on Demand</h4><p class="text-gray-600">Affiancamento alle imprese nella riorganizzazione delle procedure aziendali per orientarle alla piena conformità normativa.</p></div>
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-database"></i></div><h4 class="font-bold text-lg mb-2">Claim Data Aggregation</h4><p class="text-gray-600">Servizio di aggregazione dati dei reclami per verificare i livelli di conformità di ogni processo gestito.</p></div>
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-user-shield"></i></div><h4 class="font-bold text-lg mb-2">Claim Advisory (B2C)</h4><p class="text-gray-600">Gestione dei reclami attivati da clienti finali (cittadini o imprese) per verificare la conformità delle procedure.</p></div>
+                        <div class="card p-6"><div class="text-2xl text-[#0d2a4c] mb-3"><i class="fas fa-heart-pulse"></i></div><h4 class="font-bold text-lg mb-2">Welfare Claim</h4><p class="text-gray-600">Supporto legale, tramite studi associati, rivolto ai dipendenti aziendali per la risoluzione di reclami e controversie.</p></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="page-opiniometrica" class="page">
+             <section class="py-16 md:py-20 px-4 sm:px-6">
+                <div class="container mx-auto">
+                    <a href="#" class="text-[#0d2a4c] hover:underline mb-8 inline-block nav-link-dropdown" data-page="servizi">&larr; Torna a tutti i servizi</a>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Opiniometrica</h1>
+                    <p class="text-lg text-gray-700 max-w-4xl leading-relaxed mb-12">Un servizio di "intelligenza collettiva" per decision-maker pubblici e privati. Attraverso la nostra suite tecnologica proprietaria, offriamo survey di opinioni altamente qualificate per ottenere insight su orientamenti, tendenze e sentiment dei mercati e della società, con un approccio rigorosamente fact-based, un-biased e no-nonsense.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="card p-6 text-center"><div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-flag"></i></div><h4 class="font-bold text-lg mb-2">Indipendenza</h4><p class="text-gray-600">Dati e informazioni raccolti da interlocutori qualificati e indipendenti per garantire la massima oggettività.</p></div>
+                        <div class="card p-6 text-center"><div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-stamp"></i></div><h4 class="font-bold text-lg mb-2">Accountability</h4><p class="text-gray-600">Un'area di Auditing dedicata certifica e archivia i dati raccolti, assicurando trasparenza e affidabilità.</p></div>
+                        <div class="card p-6 text-center"><div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-laptop-code"></i></div><h4 class="font-bold text-lg mb-2">Digitalizzazione</h4><p class="text-gray-600">Connessione di tutti gli attori interessati tramite un portale web dedicato per un'interazione fluida e immediata.</p></div>
+                        <div class="card p-6 text-center"><div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-chart-bar"></i></div><h4 class="font-bold text-lg mb-2">Big Data Analysis</h4><p class="text-gray-600">Gestione di grandi moli di dati per report sintetici che svelano correlazioni nascoste, scenari e insight.</p></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="page-advisory-board" class="page">
+            <section class="py-16 md:py-20 px-4 sm:px-6">
+                <div class="container mx-auto">
+                    <h1 class="text-4xl md:text-5xl font-bold text-center mb-10">Il Nostro Advisory Board</h1>
+                    <div class="max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed space-y-6 mb-16">
+                        <p>L’Advisory Board rappresenta per Percipio uno <strong>spazio fondamentale</strong> di confronto, dove si discute e si ragiona con <strong>profondità, autonomia di pensiero e creatività</strong>. È qui che prendono forma le analisi su scenari, tendenze, strategie e opportunità che guidano il nostro operato.</p>
+                        <p>È costituito da <strong>leader di settore, esperti di spicco e innovatori visionari</strong>. Questo patrimonio di esperienze, conoscenze ed energie garantisce al Gruppo un approccio autenticamente <strong>multidisciplinare</strong>, fondendo competenze diverse per creare un valore unico.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-5xl mx-auto">
+                        <div class="card p-6 text-center">
+                            <div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-binoculars"></i></div>
+                            <h3 class="font-bold text-lg text-[#0d2a4c] mb-2">Visione Strategica</h3>
+                            <p class="text-gray-600">Con la loro visione del futuro, i membri del Board forniscono prospettive e intuizioni strategiche che si traducono in un vantaggio competitivo tangibile per i nostri clienti.</p>
+                        </div>
+                        <div class="card p-6 text-center">
+                            <div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-rocket"></i></div>
+                            <h3 class="font-bold text-lg text-[#0d2a4c] mb-2">Eccellenza e Innovazione</h3>
+                            <p class="text-gray-600">Il mix di esperienza e preparazione rafforza il nostro impegno per l'eccellenza, assicurandoci di rimanere all'avanguardia del mercato.</p>
+                        </div>
+                        <div class="card p-6 text-center">
+                            <div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-sync-alt"></i></div>
+                            <h3 class="font-bold text-lg text-[#0d2a4c] mb-2">Crescita Dinamica</h3>
+                            <p class="text-gray-600">L’Advisory Board è un organo dinamico ed evolutivo. Il nostro obiettivo è incrementare costantemente i contatti strategici con persone in sintonia con la nostra visione.</p>
+                        </div>
+                    </div>
+                    <div class="max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed space-y-6">
+                         <p>Cerchiamo costantemente nuovi membri che sposeranno in pieno il nostro approccio di <strong>navigare la complessità</strong> e accettare le sfide del cambiamento con l’<strong>audacia di nuovi approcci</strong>, nuove idee e nuovi modi di pensare. Il nostro scopo è costante: <strong>essere all’avanguardia</strong> in ogni settore in cui operiamo.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="page-ricerca-sviluppo" class="page">
+            <section class="py-16 md:py-20 px-4 sm:px-6">
+                <div class="container mx-auto">
+                    <h1 class="text-4xl md:text-5xl font-bold text-center mb-10">Ricerca & Sviluppo</h1>
+                    <div class="max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed space-y-6 mb-16">
+                        <p>Percipio è consapevole che bisogna <strong>andare oltre il fatturato</strong> e che le soluzioni per poter raggiungere traguardi alti necessitano di <strong>ricerca, sviluppo</strong> e di essere guidati da <strong>persone altamente qualificate</strong>. Andare oltre il fatturato significa fornire ai propri clienti una <strong>visione di quello che sarà fra qualche anno</strong>, e quindi <strong>preventivare rischi</strong> in modo assoluto e indicare strade che possano incentivare l’azienda a sviluppare un <strong>mind set vocato alla valorizzazione dei successi</strong> raggiunti ma anche a <strong>potenziare gli asset intangibili</strong> che sono le persone in primis.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                        <div class="card p-6 text-center">
+                            <div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-cogs"></i></div>
+                            <h3 class="font-bold text-lg text-[#0d2a4c] mb-2">Strategia e Crescita</h3>
+                            <p class="text-gray-600">L'R&D è il motore della nostra crescita, ci permette di anticipare il mercato e offrire soluzioni all'avanguardia.</p>
+                        </div>
+                        <div class="card p-6 text-center">
+                            <div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-gem"></i></div>
+                            <h3 class="font-bold text-lg text-[#0d2a4c] mb-2">Asset e Know-How</h3>
+                            <p class="text-gray-600">Consideriamo il know-how tecnologico un asset di altissimo valore e siamo aperti a opportunità di corporate venture.</p>
+                        </div>
+                        <div class="card p-6 text-center">
+                            <div class="text-3xl text-[#0d2a4c] mb-3"><i class="fas fa-network-wired"></i></div>
+                            <h3 class="font-bold text-lg text-[#0d2a4c] mb-2">Ecosistemi di Innovazione</h3>
+                            <p class="text-gray-600">Partecipiamo attivamente a reti di imprese, università e centri di ricerca per generare innovazione e valore condiviso.</p>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">I Nostri Risultati R&D</h2>
+                     <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="card p-8">
+                             <h3 class="font-bold text-xl text-[#0d2a4c] mb-3">Algoritmo "Mecanism Optizimation Client"</h3>
+                             <p class="text-gray-600">Abbiamo sviluppato e collaudato questo algoritmo proprietario per individuare nuove opportunità commerciali e strategiche tra più imprese, potenziando le sinergie di rete.</p>
+                        </div>
+                         <div class="card p-8">
+                             <h3 class="font-bold text-xl text-[#0d2a4c] mb-3">Piattaforma "Claim Analitika"</h3>
+                             <p class="text-gray-600">Abbiamo creato i workflow digitalizzati e l'algoritmo di questa piattaforma per gestire la verifica di conformità dei processi nei mercati regolamentati a seguito di un reclamo.</p>
+                        </div>
+                     </div>
+                </div>
+            </section>
+        </div>
+        <div id="page-carriere" class="page">
+            <section class="py-16 md:py-20 px-4 sm:px-6">
+                <div class="container mx-auto">
+                    <h1 class="text-4xl md:text-5xl font-bold text-center mb-6">Carriere in Percipio</h1>
+                    <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-12">
+                        Entra a far parte di un <strong>team dinamico e multidisciplinare</strong>. Siamo una realtà che non teme lo <strong>smart working</strong> perché lavoriamo per <strong>obiettivi</strong>: la <strong>qualità dei risultati</strong> e la <strong>soddisfazione dei clienti</strong> guidano la <strong>crescita aziendale e il tuo percorso professionale</strong>. In Percipio, valorizziamo l'<strong>apprendimento continuo</strong> e l'<strong>audacia di pensare in modo nuovo</strong>. Cerchiamo persone talentuose e appassionate che vogliano contribuire a risolvere le sfide complesse dei nostri clienti e a plasmare il futuro della consulenza.
+                    </p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-center mb-10">Posizioni Aperte</h2>
+                    <div class="space-y-6 max-w-4xl mx-auto">
+                        <div class="card p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                            <div class="flex-grow text-center md:text-left">
+                                <h3 class="font-bold text-xl text-[#0d2a4c]">Project Manager</h3>
+                                <p class="text-gray-600 text-sm mb-2">Gestione e coordinamento di progetti complessi in ambito strategico e di innovazione. Responsabilità sulla pianificazione, esecuzione e monitoraggio dei risultati.</p>
+                                <p class="text-gray-500 font-medium">Sede: Lazio / Abruzzo</p>
+                            </div>
+                            <a href="#" class="btn btn-secondary nav-link-dropdown flex-shrink-0 mt-4 md:mt-0" data-page="contatti">Candidati Ora</a>
+                        </div>
+                        <div class="card p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                             <div class="flex-grow text-center md:text-left">
+                                <h3 class="font-bold text-xl text-[#0d2a4c]">Process Manager</h3>
+                                <p class="text-gray-600 text-sm mb-2">Analisi, mappatura e ottimizzazione dei processi aziendali dei clienti. Implementazione di soluzioni per migliorare l'efficienza operativa e garantire la conformità.</p>
+                                <p class="text-gray-500 font-medium">Sede: Lazio / Abruzzo</p>
+                            </div>
+                            <a href="#" class="btn btn-secondary nav-link-dropdown flex-shrink-0 mt-4 md:mt-0" data-page="contatti">Candidati Ora</a>
+                        </div>
+                        <div class="card p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                             <div class="flex-grow text-center md:text-left">
+                                <h3 class="font-bold text-xl text-[#0d2a4c]">Senior Operativo</h3>
+                                <p class="text-gray-600 text-sm mb-2">Esecuzione di attività consulenziali ad alto valore aggiunto e supporto diretto ai clienti nell'implementazione di strategie di business, analisi di mercato e piani di crescita.</p>
+                                 <p class="text-gray-500 font-medium">Sede: Lazio / Abruzzo</p>
+                            </div>
+                            <a href="#" class="btn btn-secondary nav-link-dropdown flex-shrink-0 mt-4 md:mt-0" data-page="contatti">Candidati Ora</a>
+                        </div>
+                         <div class="card p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                             <div class="flex-grow text-center md:text-left">
+                                <h3 class="font-bold text-xl text-[#0d2a4c]">Junior Operativo</h3>
+                                <p class="text-gray-600 text-sm mb-2">Supporto al team senior nelle attività di progetto, analisi dati, preparazione di presentazioni, ricerche di mercato e supporto operativo nell'erogazione dei servizi.</p>
+                                 <p class="text-gray-500 font-medium">Sede: Lazio / Abruzzo</p>
+                            </div>
+                            <a href="#" class="btn btn-secondary nav-link-dropdown flex-shrink-0 mt-4 md:mt-0" data-page="contatti">Candidati Ora</a>
+                        </div>
+                         <div class="card p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                             <div class="flex-grow text-center md:text-left">
+                                <h3 class="font-bold text-xl text-[#0d2a4c]">Segreteria Specializzata</h3>
+                                <p class="text-gray-600 text-sm mb-2">Gestione delle attività di segreteria organizzativa e amministrativa, supporto alla gestione dei flussi documentali e pianificazione meeting.</p>
+                                 <p class="text-gray-500 font-medium">Sede: L'Aquila</p>
+                            </div>
+                            <a href="#" class="btn btn-secondary nav-link-dropdown flex-shrink-0 mt-4 md:mt-0" data-page="contatti">Candidati Ora</a>
+                        </div>
+                    </div>
+                    <div class="text-center mt-16 bg-white rounded-lg p-8 md:p-10 max-w-4xl mx-auto">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-4">Candidatura Spontanea</h3>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-6">Non hai trovato la posizione che fa per te? Crediamo nel potenziale inespresso. Inviaci il tuo CV, saremo felici di valutare il tuo profilo per future opportunità.</p>
+                        <a href="#" class="btn btn-primary nav-link" data-page="contatti">Invia il tuo CV</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="page-contatti" class="page">
+            <section class="py-16 md:py-20 px-4 sm:px-6 bg-white">
+                <div class="container mx-auto">
+                    <h1 class="text-4xl md:text-5xl font-bold text-center mb-10">Contattaci</h1>
+                    <div class="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+                        <div class="card p-6 md:p-8">
+                             <form>
+                                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                    <div>
+                                        <label for="nome" class="block text-gray-700 font-medium mb-2">Nome</label>
+                                        <input type="text" id="nome" name="nome" class="form-input" required>
+                                    </div>
+                                    <div>
+                                        <label for="cognome" class="block text-gray-700 font-medium mb-2">Cognome</label>
+                                        <input type="text" id="cognome" name="cognome" class="form-input" required>
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                    <div>
+                                        <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                                        <input type="email" id="email" name="email" class="form-input" required>
+                                    </div>
+                                    <div>
+                                        <label for="telefono" class="block text-gray-700 font-medium mb-2">Telefono</label>
+                                        <input type="tel" id="telefono" name="telefono" class="form-input">
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <label for="piva" class="block text-gray-700 font-medium mb-2">P. Iva</label>
+                                    <input type="text" id="piva" name="piva" class="form-input">
+                                </div>
+                                <div class="mb-6">
+                                    <label for="fascia-oraria" class="block text-gray-700 font-medium mb-2">Fascia oraria di reperibilità</label>
+                                    <select id="fascia-oraria" name="fascia-oraria" class="form-input bg-white">
+                                        <option disabled selected>Scegli un'opzione</option>
+                                        <option>9.00 / 12.00</option>
+                                        <option>15.00 / 18.00</option>
+                                    </select>
+                                </div>
+                                <div class="mb-6">
+                                    <label for="file-upload" class="block text-gray-700 font-medium mb-2">Allega un file</label>
+                                    <input type="file" id="file-upload" name="file-upload" class="hidden">
+                                    <div class="flex items-center">
+                                        <label for="file-upload" class="file-input-label">
+                                            <i class="fas fa-upload mr-2"></i>
+                                            <span>Scegli file</span>
+                                        </label>
+                                        <span id="file-name" class="ml-4 text-gray-500 text-sm">Nessun file selezionato</span>
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <label for="message" class="block text-gray-700 font-medium mb-2">Messaggio</label>
+                                    <textarea id="message" name="message" rows="5" class="form-input" placeholder="Scrivici un messaggio..."></textarea>
+                                </div>
+                                <div class="mb-6">
+                                    <div class="g-recaptcha" data-sitekey="6LdNzn8rAAAAAHZZU3UkqYoICCqek8Rt6FJEqaFg" data-callback="recaptchaCallback" data-expired-callback="recaptchaExpiredCallback"></div>
+                                </div>
+                                <div class="mb-6">
+                                    <div class="flex items-start">
+                                        <input type="checkbox" id="privacy-check" name="privacy" class="mt-1 h-4 w-4 text-[#0d2a4c] focus:ring-[#1a3b6c] border-gray-300 rounded">
+                                        <label for="privacy-check" class="ml-2 block text-sm text-gray-700">
+                                            Dichiaro di aver letto l'informativa sulla privacy e acconsento al trattamento dei miei dati personali ai sensi del Regolamento (UE) 2016/679 (GDPR).
+                                        </label>
+                                    </div>
+                                </div>
+                                <button type="submit" id="submit-button" class="w-full btn btn-primary" disabled>Invia Messaggio</button>
+                            </form>
+                        </div>
+                        <div class="space-y-8 pt-4">
+                            <div>
+                                 <h3 class="text-2xl font-bold text-[#0d2a4c] mb-4">Le Nostre Sedi</h3>
+                                 <div class="space-y-4 text-lg text-gray-700">
+                                     <p><i class="fas fa-map-marker-alt mr-3 text-[#0d2a4c]"></i><strong>Roma:</strong> Largo del Nazzareno 8/11 - 00187</p>
+                                     <p><i class="fas fa-map-marker-alt mr-3 text-[#0d2a4c]"></i><strong>L'Aquila:</strong> Corso Federico II° 78 - 67100</p>
+                                 </div>
+                            </div>
+                            <div>
+                                 <h3 class="text-2xl font-bold text-[#0d2a4c] mb-4">Cerchi Lavoro?</h3>
+                                 <p class="text-lg text-gray-700">Visita la nostra pagina Carriere per scoprire le posizioni aperte e come unirti al nostro team.</p>
+                                 <a href="#" class="mt-4 btn btn-secondary nav-link-dropdown" data-page="carriere">Vedi le Posizioni Aperte</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="page-impressum" class="page">
+            <section class="py-16 md:py-20 px-4 sm:px-6">
+                <div class="container mx-auto">
+                    <h1 class="text-4xl md:text-5xl font-bold text-center mb-10">Impressum</h1>
+                    <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                        <h2 class="text-2xl font-bold text-[#0d2a4c] mb-6">Dati della Società</h2>
+                        <div class="space-y-4 text-lg text-gray-700">
+                            <p><strong>Ragione Sociale:</strong> PERCIPIO SRL</p>
+                            <p><strong>Indirizzo:</strong> VIA XX SETTEMBRE 10 - 67100 - L'AQUILA (AQ)</p>
+                            <p><strong>Partita IVA:</strong> 02138710666</p>
+                            <p><strong>Codice Fiscale:</strong> 02138710666</p>
+                            <p><strong>VAT Europeo:</strong> IT02138710666</p>
+                            <p><strong>REA:</strong> AQ - 205745</p>
+                            <p><strong>PEC:</strong> percipioholding@pecmail.net</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-12">
+                        <a href="#" class="btn btn-primary nav-link" data-page="home">Torna alla Home Page</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="page-cookie-policy" class="page">
+            <section class="py-16 md:py-20 px-4 sm:px-6">
+                <div class="container mx-auto">
+                    <h1 class="text-4xl md:text-5xl font-bold text-center mb-10">Cookie Policy</h1>
+                    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md text-gray-700 leading-relaxed space-y-4">
+                        <h2 class="text-2xl font-bold text-[#0d2a4c]">Cosa sono i cookie</h2>
+                        <p>I cookie sono piccoli file di testo che i siti visitati dagli utenti inviano ai loro terminali, dove vengono memorizzati per essere poi ritrasmessi agli stessi siti alla visita successiva. Questo sito utilizza diverse tipologie di cookie.</p>
+                        
+                        <h2 class="text-2xl font-bold text-[#0d2a4c] mt-6">Cookie Tecnici</h2>
+                        <p>Questi cookie sono essenziali per il corretto funzionamento del sito e per consentire la navigazione. Senza di essi, alcune funzionalità potrebbero essere compromesse. Non raccolgono informazioni personali e sono necessari per funzioni come la gestione della sessione e il consenso ai cookie stessi.</p>
+
+                        <h2 class="text-2xl font-bold text-[#0d2a4c] mt-6">Cookie Analitici</h2>
+                        <p>Utilizziamo cookie analitici per raccogliere informazioni in forma aggregata e anonima sul numero di utenti e su come questi visitano il sito. Lo strumento che utilizziamo è <strong>Google Analytics</strong> (servizio offerto da Google, Inc.). I dati generati da Google Analytics sono conservati da Google così come indicato nella sua informativa sulla privacy.</p>
+                        <p>L'utilizzo di questi cookie è subordinato al tuo consenso. Puoi scegliere di non dare il consenso o di revocarlo in qualsiasi momento.</p>
+
+                        <h2 class="text-2xl font-bold text-[#0d2a4c] mt-6">Gestione dei Cookie</h2>
+                        <p>Puoi gestire le tue preferenze sui cookie direttamente dal banner che appare alla tua prima visita. Inoltre, la maggior parte dei browser permette di controllare e disabilitare i cookie attraverso le impostazioni. Ti ricordiamo che disabilitare i cookie tecnici può compromettere il funzionamento del sito.</p>
+                    </div>
+                    <div class="text-center mt-12">
+                        <a href="#" class="btn btn-primary nav-link" data-page="home">Torna alla Home Page</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="page-404" class="page">
+            <section class="py-16 md:py-20 px-4 sm:px-6 text-center">
+                <div class="container mx-auto">
+                    <img src="https://i.imgur.com/vpt3tPR.png" alt="Illustrazione di un monitor rotto con un messaggio di errore" class="w-full max-w-md mx-auto mb-8 rounded-lg">
+                    <h1 class="text-4xl md:text-5xl font-bold text-center mb-4">La pagina che stai cercando sembra essere volata via!</h1>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">Ci scusiamo per l'inconveniente. Forse un link non era corretto o riprova più tardi. Grazie!</p>
+                    <a href="#" class="btn btn-primary nav-link" data-page="home">Torna alla Home Page</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#1a202c] text-white py-12 px-4 sm:px-6">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div class="mb-6 md:mb-0">
+                <h4 class="text-xl font-bold mb-4">PERCIPIO GROUP</h4>
+                <p class="text-gray-400">Percipio srl<br>Via XX Settembre, 10<br>67100 - L'Aquila (AQ)<br>P.Iva: 02138710666</p>
+            </div>
+            <div class="mb-6 md:mb-0">
+                <h4 class="text-xl font-bold mb-4">Link Utili</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white nav-link-dropdown" data-page="impressum">Impressum</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white nav-link-dropdown" data-page="404">Privacy Policy</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white nav-link-dropdown" data-page="cookie-policy">Cookie Policy</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white nav-link-dropdown" data-page="404">Modello Organizzativo</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white nav-link-dropdown" data-page="404">Codice Etico</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold mb-4">Seguici</h4>
+                <div class="flex justify-center md:justify-start space-x-4 text-2xl">
+                     <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-x-twitter"></i></a>
+                     <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                 <p class="text-gray-400 mt-4">info@percipiohg.it</p>
+            </div>
+        </div>
+        <div class="container mx-auto text-center text-gray-500 border-t border-gray-700 mt-8 pt-6">
+            &copy; 2025 Percipio Group. Tutti i diritti riservati.
+        </div>
+    </footer>
+
+    <!-- Cookie Consent Popup -->
+    <div id="cookie-consent-banner" class="hidden fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 shadow-lg z-50 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-center sm:text-left">Questo sito utilizza i cookie per migliorare l'esperienza dell'utente. Per saperne di più, consulta la nostra <a href="#" class="underline hover:text-gray-300 nav-link-dropdown" data-page="cookie-policy">Cookie Policy</a>.</p>
+        <div class="flex-shrink-0">
+            <button id="accept-cookies" class="btn btn-primary !bg-white !text-black">Accetta</button>
+        </div>
+    </div>
+    
+    <script>
+        let recaptchaVerified = false;
+
+        function checkFormValidity() {
+            const privacyCheck = document.getElementById('privacy-check');
+            const submitButton = document.getElementById('submit-button');
+            if (privacyCheck && submitButton) {
+                submitButton.disabled = !(privacyCheck.checked && recaptchaVerified);
+            }
+        }
+
+        function recaptchaCallback() {
+            recaptchaVerified = true;
+            checkFormValidity();
+        }
+
+        function recaptchaExpiredCallback() {
+            recaptchaVerified = false;
+            checkFormValidity();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link, .nav-link-dropdown, #logo-link');
+            const pages = document.querySelectorAll('.page');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileServiziToggle = document.getElementById('mobile-servizi-toggle');
+            const mobileServiziSubmenu = document.getElementById('mobile-servizi-submenu');
+            const cookieBanner = document.getElementById('cookie-consent-banner');
+            const acceptCookiesButton = document.getElementById('accept-cookies');
+            const contactForm = document.querySelector('#page-contatti form');
+            const fileUpload = document.getElementById('file-upload');
+            const fileNameSpan = document.getElementById('file-name');
+            const privacyCheck = document.getElementById('privacy-check');
+            
+            function showPage(pageId) {
+                if (!pageId) pageId = 'home';
+                
+                let pageFound = false;
+                pages.forEach(page => {
+                    if (page.id === 'page-' + pageId) {
+                        page.classList.add('active');
+                        pageFound = true;
+                    } else {
+                        page.classList.remove('active');
+                    }
+                });
+
+                if (!pageFound) {
+                    pages.forEach(p => p.classList.remove('active'));
+                    document.getElementById('page-404').classList.add('active');
+                }
+
+                document.querySelectorAll('header .nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                const activeLink = document.querySelector(`header .nav-link[data-page="${pageId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+                
+                const services = ['percipio-consulting', 'addnexta', 'claim-analitika', 'opiniometrica'];
+                if (services.includes(pageId)) {
+                     document.querySelector('a[data-page="servizi"]').classList.add('active');
+                }
+                
+                mobileMenu.classList.add('hidden');
+                window.scrollTo(0, 0);
+            }
+
+            window.showPage = showPage;
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.dataset.page;
+                    showPage(pageId);
+                });
+            });
+
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            if (mobileServiziToggle) {
+                mobileServiziToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mobileServiziSubmenu.classList.toggle('hidden');
+                    mobileServiziToggle.querySelector('i').classList.toggle('rotate-180');
+                });
+            }
+
+            if (cookieBanner && !localStorage.getItem('cookie_consent')) {
+                cookieBanner.classList.remove('hidden');
+            }
+
+            if(acceptCookiesButton) {
+                acceptCookiesButton.addEventListener('click', function() {
+                    localStorage.setItem('cookie_consent', 'true');
+                    cookieBanner.style.display = 'none';
+                });
+            }
+            
+            if (fileUpload && fileNameSpan) {
+                fileUpload.addEventListener('change', function() {
+                    if (this.files && this.files.length > 0) {
+                        fileNameSpan.textContent = this.files[0].name;
+                    } else {
+                        fileNameSpan.textContent = 'Nessun file selezionato';
+                    }
+                });
+            }
+
+            if (privacyCheck) {
+                privacyCheck.addEventListener('change', checkFormValidity);
+            }
+        });
+    </script>
+</body>
+</html>
